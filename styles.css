@@ -9,7 +9,7 @@ body {
 
 .container {
     text-align: center;
-    max-width: 600px; /* Ändern Sie die maximale Breite nach Bedarf */
+    max-width: 100px; /* Ändern Sie die maximale Breite nach Bedarf */
     margin: 0 auto;
 }
 
