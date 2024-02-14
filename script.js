@@ -1,17 +1,23 @@
 const videoElement = document.querySelector('.video');
 
-videoInput.addEventListener('change', () => {
-    if (videoInput.files.length > 0) {
-        const file = videoInput.files[0];
+videoElement.addEventListener('loadedmetadata', () => {
+    const videoWidth = videoElement.videoWidth;
+    const videoHeight = videoElement.videoHeight;
+    const frameWidth = document.querySelector('.frame').clientWidth;
+    const frameHeight = document.querySelector('.frame').clientHeight;
 
-        // Analysieren Sie die Videodatei, um die Vorschau zu generieren
-        // ...
+    // Berechnen Sie das Verhältnis von Video zu Rahmen
+    const videoRatio = videoWidth / videoHeight;
+    const frameRatio = frameWidth / frameHeight;
 
-        // Vorschau anzeigen
-        videoElement.src = previewURL;
-        videoElement.style.display = 'block';
-
-        // Entfernen Sie den Button, nachdem das Video angezeigt wird (optional).
-        button.style.display = 'none';
+    // Bestimmen Sie, ob das Video breiter oder höher ist als der Rahmen
+    if (videoRatio > frameRatio) {
+        // Das Video ist breiter als der Rahmen
+        videoElement.style.width = frameWidth + 'px';
+        videoElement.style.height = 'auto';
+    } else {
+        // Das Video ist höher als der Rahmen
+        videoElement.style.width = 'auto';
+        videoElement.style.height = frameHeight + 'px';
     }
 });
