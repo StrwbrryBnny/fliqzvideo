@@ -1,16 +1,17 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const videoInput = document.getElementById('videoInput');
-    const videoPlayer = document.getElementById('videoPlayer');
+const videoElement = document.querySelector('.video');
 
-    videoInput.addEventListener('change', function (event) {
-        const file = event.target.files[0];
+videoInput.addEventListener('change', () => {
+    if (videoInput.files.length > 0) {
+        const file = videoInput.files[0];
 
-        if (file && file.type === 'video/mp4') {
-            const videoURL = URL.createObjectURL(file);
-            videoPlayer.src = videoURL;
-        } else {
-            alert('Bitte wählen Sie eine gültige MP4-Datei aus.');
-            videoInput.value = ''; // Leeren Sie das Dateiinputfeld
-        }
-    });
+        // Analysieren Sie die Videodatei, um die Vorschau zu generieren
+        // ...
+
+        // Vorschau anzeigen
+        videoElement.src = previewURL;
+        videoElement.style.display = 'block';
+
+        // Entfernen Sie den Button, nachdem das Video angezeigt wird (optional).
+        button.style.display = 'none';
+    }
 });
